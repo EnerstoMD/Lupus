@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'startupr2';
+  title = 'lupus';
+  isSearched:Boolean;
+  constructor(){
+    this.isSearched = false
+  }
 }

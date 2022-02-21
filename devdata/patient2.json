@@ -1,0 +1,18 @@
+{
+    "oid":"223",
+    "name":"Morty",
+    "firstnames":"Morty",
+    "birthname":"Smith",
+    "lastname":"Smith",
+    "gender":"M",
+    "birthdate":"12/25/1999",
+    "ins_matricule":"13587879",
+    "nir":"",
+    "nia":"",
+    "address":"1 av parallel",
+    "city":"space",
+    "postalcode":"75001",
+    "phone":"0701020304",
+    "email":"morty@sanch.ez",
+    "birthplace_code":"59350"
+}

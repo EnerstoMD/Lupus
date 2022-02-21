@@ -1,0 +1,157 @@
+[
+    {
+        "name":"Rick",
+        "uid":1,
+        "infos":
+            {
+                "ins_matricule":"1 89 390 475 288 62",
+                "oid":"123",
+                "lastname":"Sanchez",
+                "birthname":"Sanchez",
+                "firstnames":"Rick, Daniel",
+                "name":"Rick",
+                "gender":"M",
+                "birthdate":"04/01/2022",
+                "address":"1 av parallel",
+                "city":"Space",
+                "postalcode":"75001",
+                "phone":"0601020304",
+                "email":"rick@sanch.ez",
+                "birthplace_code":"59350",
+                "nir":"",
+                "nia":""
+            }
+        ,
+        "diseases":
+            [
+                {
+                    "maladie":"asthme",
+                    "startdate":"01/01/2000",
+                    "inprogress":true,
+                    "comment":"c'est une maladie bofbof",
+                    "associated_treatments":[1]
+                },
+                {
+                    "maladie":"myopie",
+                    "startdate":"01/03/2000",
+                    "inprogress":true,
+                    "comment":"On voit plus rien il y miro",
+                    "associated_treatments": [666]
+                },
+                {
+                    "maladie":"rhume",
+                    "startdate":"01/01/2022",
+                    "inprogress":false,
+                    "comment":"on tousee un peu",
+                    "associated_treatments": [2],
+                    "enddate":"01/12/2022"
+                }
+            ]
+        ,
+        "treatments":
+            [
+                {
+                    "id":666,
+                    "name":"lunettes",
+                    "startdate":"02/01/2000",
+                    "inprogress":true,
+                    "posologie":"",
+                    "comments":"tous les jours"
+                },
+                {
+                    "id":1,
+                    "name":"inhalateur",
+                    "startdate":"02/01/2000",
+                    "inprogress":true,
+                    "posologie":"tous les matins et a chaque crise",
+                    "comments":"corticoides"
+                },
+                {
+                    "id":3,
+                    "name":"doliprane",
+                    "startdate":"02/01/2005",
+                    "enddate":"02/07/2005",
+                    "inprogress":false,
+                    "posologie":"tous les matins et a chaque crise",
+                    "comments":"c'est fort"
+                }
+            ]
+    }
+    ,
+    {"name":"Morty",
+        "uid":2,
+        "infos":
+        {
+            "oid":"223",
+            "name":"Morty",
+            "firstnames":"Morty",
+            "birthname":"Smith",
+            "lastname":"Smith",
+            "gender":"M",
+            "birthdate":"12/25/1999",
+            "ins_matricule":"13587879",
+            "nir":"",
+            "nia":"",
+            "address":"1 av parallel",
+            "city":"space",
+            "postalcode":"75001",
+            "phone":"0701020304",
+            "email":"morty@sanch.ez",
+            "birthplace_code":"59350"
+        },
+        "diseases":
+            [
+                {
+                    "maladie":"asthme",
+                    "startdate":"01/01/2000",
+                    "inprogress":true,
+                    "comment":"c'est une maladie bofbof",
+                    "associated_treatments":[1]
+                },
+                {
+                    "maladie":"myopie",
+                    "startdate":"01/03/2000",
+                    "inprogress":true,
+                    "comment":"On voit plus rien il y miro",
+                    "associated_treatments": [666]
+                },
+                {
+                    "maladie":"rhume",
+                    "startdate":"01/01/2022",
+                    "inprogress":false,
+                    "comment":"on tousee un peu",
+                    "associated_treatments": [2],
+                    "enddate":"01/12/2022"
+                }
+            ]
+        ,
+        "treatments":
+            [
+                {
+                    "id":666,
+                    "name":"lunettes",
+                    "startdate":"02/01/2000",
+                    "inprogress":true,
+                    "posologie":"",
+                    "comments":"tous les jours"
+                },
+                {
+                    "id":1,
+                    "name":"inhalateur",
+                    "startdate":"02/01/2000",
+                    "inprogress":true,
+                    "posologie":"tous les matins et a chaque crise",
+                    "comments":"corticoides"
+                },
+                {
+                    "id":3,
+                    "name":"doliprane",
+                    "startdate":"02/01/2005",
+                    "enddate":"02/07/2005",
+                    "inprogress":false,
+                    "posologie":"tous les matins et a chaque crise",
+                    "comments":"c'est fort"
+                }
+            ]
+    }
+]

@@ -1,0 +1,22 @@
+.sidenav-container {
+  position: flex;
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: flex;
+  top: 10;
+  z-index: 1;
+}
+
+.active {
+  font-size: 1.3rem;
+}

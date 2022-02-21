@@ -1,0 +1,24 @@
+[
+    {
+        "maladie":"asthme",
+        "startdate":"01/01/2000",
+        "inprogress":true,
+        "comment":"c'est une maladie bofbof",
+        "associated_treatments":[1]
+    },
+    {
+        "maladie":"myopie",
+        "startdate":"01/03/2000",
+        "inprogress":true,
+        "comment":"On voit plus rien il y miro",
+        "associated_treatments": [666]
+    },
+    {
+        "maladie":"rhume",
+        "startdate":"01/01/2022",
+        "inprogress":false,
+        "comment":"on tousee un peu",
+        "associated_treatments": [2],
+        "enddate":"01/12/2022"
+    }
+]

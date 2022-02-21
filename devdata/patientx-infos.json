@@ -1,0 +1,18 @@
+[
+{
+    "ins_matricule":"1 89 390 475 288 62",
+    "oid":"123",
+    "lastname":"Sanchez",
+    "birthname":"Sanchez",
+    "firstnames":"Rick, Daniel",
+    "name":"Rick",
+    "gender":"M",
+    "birthdate":"04/01/2022",
+    "address":"1 av parallel",
+    "city":"Space",
+    "postalcode":"75001",
+    "phone":"0601020304",
+    "email":"rick@sanch.ez",
+    "birthplace_code":"59350"
+}
+]

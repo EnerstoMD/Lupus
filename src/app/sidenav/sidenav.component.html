@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item><mat-icon aria-hidden="false" aria-label="Example home icon">dashboard</mat-icon>Resume</a>
+      <a mat-list-item routerLink="/patients" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Example home icon">person_search</mat-icon>Patients</a>
+      <a mat-list-item routerLink="/consultations" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Example home icon">monitor_heart</mat-icon>Consultations</a>
+      <a mat-list-item><mat-icon aria-hidden="false" aria-label="Example home icon">calendar_month</mat-icon>Agenda</a>
+      <a mat-list-item><mat-icon aria-hidden="false" aria-label="Example home icon">payments</mat-icon>Feuilles de soin</a>
+      <a mat-list-item><mat-icon aria-hidden="false" aria-label="Example home icon">upload_file</mat-icon>Documents</a>
+      <a mat-list-item><mat-icon aria-hidden="false" aria-label="Example home icon">mail_lock</mat-icon>Messagerie</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>StartuPr</span>
+      <!-- <button mat-icon-button aria-label="Toggle sidenav" (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+      
+    </mat-toolbar>
+    
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
