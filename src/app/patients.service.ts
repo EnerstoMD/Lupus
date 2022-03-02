@@ -1,47 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import {PatientFile,PersonalInfo,PatientDisease,PatientTreatment} from './models/patientfile.models'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { map,catchError } from 'rxjs/operators';
+import { Observable, throwError} from 'rxjs';
+import { PersonalInfo } from './models/patientfile.models';
 
-export interface SearchResult {
-  name:string,
-  uid:number
-}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientsService {
-  patientResults = require('../../devdata/patientlist.json')
+  url = 'http://localhost:4545/patients/search'
+  constructor(private http: HttpClient) { }
+  opts = []
 
-  rickInfos: PersonalInfo[] = require('../../devdata/patientx-infos.json');
-  rickDiseases : PatientDisease[] = require('../../devdata/patientx-diseases.json')
-  rickTreatments : PatientTreatment[] = require('../../devdata/patientx-treatments.json')
-  rickPatientFile : PatientFile = {
-    "uid":1,
-    "infos":this.rickInfos[0],
-    "diseases":this.rickDiseases,
-    "treatments":this.rickTreatments
+  searchPatient(name:string): Observable<PersonalInfo[]>{
+    let hp = new HttpParams
+    hp=hp.append("name",name)
+    return this.http.get<PersonalInfo[]>(this.url,{params:hp})
   }
-  mortyInfos : PersonalInfo = require('../../devdata/patient2.json')
-  mortyPatientFile : PatientFile = {
-    "uid":2,
-    "infos":this.mortyInfos,
-    "diseases":this.rickDiseases,
-    "treatments":this.rickTreatments
-  }
-  allPatientDB : PatientFile[] = require('../../devdata/allPatientDB.json')
-  
-  constructor(private http: HttpClient) {
-    console.log("patientres:",this.allPatientDB)
-  }
-  
-  getPatients(): SearchResult[] {
-    return   this.patientResults
-  }
-
-  getPatientByUid(uid:number): PatientFile {
-    return this.rickPatientFile;
-  }
+  // private extractData(res:any){
+  //   let body = res
+  //   return body
+  // }
+  // private handleErrorObservable(error: any) {
+  //   console.error(error.message || error);
+  //   return throwError(error);
+  // }
 }

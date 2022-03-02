@@ -1,0 +1,13 @@
+.mat-form-field{
+    overflow:hidden !important;
+}
+
+.search-bar{
+    min-width: 200px;
+    width: 50%;
+    border-radius: 1em;
+}
+
+.search-form{
+    border-collapse: collapse;
+}

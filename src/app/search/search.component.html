@@ -1,1 +1,21 @@
-<p>search works!</p>
+<div class="search-or-add-patient-card">
+    <form class="search-form" (ngSubmit)="searchPatient()">
+        <mat-form-field class="search-bar" appearance="fill">
+          <mat-label>Recherche le nom d'un patient</mat-label>
+          <input type="text"
+                 placeholder="recherche sensible a la casse"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 >
+        </mat-form-field>
+      </form>
+</div>
+<div>
+    <mat-selection-list class="searchedlist" #searchedpat [multiple]="false">
+        <mat-list-option *ngFor="let patient of filteredPatients | async" [value]="patient">
+            {{patient.name}}
+        </mat-list-option>
+      </mat-selection-list>
+{{searchedpat.selectedOptions.selected[0]?.value.id}}
+</div>

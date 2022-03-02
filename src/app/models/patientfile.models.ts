@@ -8,10 +8,11 @@ export class PatientFile {
 }
 export class PersonalInfo { 
   constructor(
-    public oid: string,
-    public name: string,
+    public id:string,
+    public oid:string,
+    public name:string,
     public firstnames:string,
-    public lastname: string,
+    public lastname:string,
     public birthname:string,
     public gender:string,
     public birthdate: Date,
