@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PatientsComponent } from './patients/patients.component';
 import { ConsultationsComponent } from './consultations/consultations.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent,AddPatientFormDialog } from './search/search.component';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -25,6 +25,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 
 
@@ -35,6 +37,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     PatientsComponent,
     ConsultationsComponent,
     SearchComponent,
+    AddPatientFormDialog,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatExpansionModule,
     MatTabsModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [
@@ -64,7 +69,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     SidenavComponent,
     PatientsComponent,
     ConsultationsComponent,
-    SearchComponent
+    SearchComponent,
+    AddPatientFormDialog
   ]
 })
 export class AppModule { }

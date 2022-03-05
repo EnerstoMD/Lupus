@@ -1,13 +1,27 @@
+.search-or-add-patient-card{
+    display:grid;
+    /* //grid-column: auto auto; */
+    grid-template-columns: 70% auto ;
+}
+
+.search-or-add-patient-grid-item{
+    max-width: 70%;
+}
+
 .mat-form-field{
     overflow:hidden !important;
 }
 
 .search-bar{
     min-width: 200px;
-    width: 50%;
-    border-radius: 1em;
+    width: 100%;
+    /* border-radius: 1em; */
 }
 
 .search-form{
     border-collapse: collapse;
+}
+.search-button{
+    max-width: 20%;
+    display: flex;
 }

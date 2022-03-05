@@ -1,0 +1,65 @@
+<form class="add-patient-form"  [formGroup]="addPatFormGroup" (ngSubmit)="addPatient()">   
+    <table class="add-patient-form-paragraph" cellspacing="2">
+        <tr>
+            <td><mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>Prenom</mat-label>
+                <input matInput formControlName="name" required>
+            </mat-form-field></td>
+            <td><mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>Nom de famille</mat-label>
+                <input matInput formControlName="lastname">
+            </mat-form-field></td>
+            
+            <td><mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>Genre</mat-label>
+                <input matInput formControlName="gender">
+            </mat-form-field></td>
+        </tr>
+        <tr>
+            <td><mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>2eme Prenom(s)</mat-label>
+                <input matInput formControlName="firstnames">
+            </mat-form-field></td>
+            <td><mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>Nom de naissance</mat-label>
+                <input matInput formControlName="birthname">
+            </mat-form-field></td>
+        </tr>
+        <tr>
+            <mat-form-field class="add-patient-form-section" appearance="fill">
+                <mat-label>numero secu</mat-label>
+                <input matInput formControlName="ins_matricule">
+            </mat-form-field>
+        </tr>
+    </table>
+  
+    <p>
+      <mat-form-field class="add-patient-form-paragraph" appearance="fill">
+        <mat-label>Adresse</mat-label>
+        <textarea matInput placeholder="Ex. 1 Avenue Secretan" formControlName="address"></textarea>
+      </mat-form-field>
+      <mat-form-field class="add-patient-form-paragraph" appearance="fill">
+        <mat-label>Telephone</mat-label>
+        <input matInput placeholder="Ex. 0601020304" formControlName="phone">
+      </mat-form-field>
+      <mat-form-field class="add-patient-form-paragraph" appearance="fill">
+        <mat-label>email</mat-label>
+        <input matInput placeholder="Ex. johm@france.gov" formControlName="email">
+      </mat-form-field>
+    </p>
+  
+    <table class="add-patient-form-paragraph" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Ville</mat-label>
+        <input matInput placeholder="Ex. San Francisco" formControlName="address">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Code Postal</mat-label>
+        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" formControlName="postalcode">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+
+    <button mat-raised-button type="submit" >Ajouter Patient</button>
+</form>
+  

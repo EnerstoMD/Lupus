@@ -10,15 +10,23 @@ import { PersonalInfo } from './models/patientfile.models';
   providedIn: 'root'
 })
 export class PatientsService {
-  url = 'http://localhost:4545/patients/search'
+  url = 'http://localhost:4545/patients'
   constructor(private http: HttpClient) { }
   opts = []
 
   searchPatient(name:string): Observable<PersonalInfo[]>{
     let hp = new HttpParams
     hp=hp.append("name",name)
-    return this.http.get<PersonalInfo[]>(this.url,{params:hp})
+
+    if (name == null){
+      return this.http.get<PersonalInfo[]>(this.url)
+    }
+    return this.http.get<PersonalInfo[]>(this.url+"/search",{params:hp})
   }
+
+  addPatient(patient:string){
+    return this.http.post(this.url,patient)
+  } 
   // private extractData(res:any){
   //   let body = res
   //   return body

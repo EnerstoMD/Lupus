@@ -1,20 +1,28 @@
 <div class="search-or-add-patient-card">
-    <form class="search-form" (ngSubmit)="searchPatient()">
-        <mat-form-field class="search-bar" appearance="fill">
-          <mat-label>Recherche le nom d'un patient</mat-label>
-          <input type="text"
-                 placeholder="recherche sensible a la casse"
-                 aria-label="Number"
-                 matInput
-                 [formControl]="myControl"
-                 >
-        </mat-form-field>
-      </form>
+    <div class="search-or-add-patient-grid-item">
+        <form class="search-form" (ngSubmit)="searchPatient()">
+            <mat-form-field class="search-bar" appearance="fill">
+            <mat-label>Recherche le nom d'un patient</mat-label>
+            <input type="text"
+                    placeholder="recherche sensible a la casse"
+                    matInput
+                    [formControl]="myControl"
+                    >
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="search-or-add-patient-grid-item">
+        <button mat-fab (click)="openDialog()"><mat-icon>person_add</mat-icon></button>
+        Ajouter Patient
+    </div>
 </div>
 <div>
     <mat-selection-list class="searchedlist" #searchedpat [multiple]="false">
+        <div mat-line *ngIf="listIsVisible">Resultats
+            <mat-progress-bar mode="query" *ngIf="!searchcomplete"></mat-progress-bar>
+        </div>
         <mat-list-option *ngFor="let patient of filteredPatients | async" [value]="patient">
-            {{patient.name}}
+            {{patient.name}} {{patient.lastname}} {{patient.ins_matricule}}
         </mat-list-option>
       </mat-selection-list>
 {{searchedpat.selectedOptions.selected[0]?.value.id}}
