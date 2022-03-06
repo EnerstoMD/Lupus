@@ -22,8 +22,7 @@
             <mat-progress-bar mode="query" *ngIf="!searchcomplete"></mat-progress-bar>
         </div>
         <mat-list-option *ngFor="let patient of filteredPatients | async" [value]="patient">
-            {{patient.name}} {{patient.lastname}} {{patient.ins_matricule}}
+            <a [routerLink]="patient.id">{{patient.name}} {{patient.lastname}} {{patient.ins_matricule}}</a>
         </mat-list-option>
       </mat-selection-list>
-{{searchedpat.selectedOptions.selected[0]?.value.id}}
 </div>

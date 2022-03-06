@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit{
   searchcomplete = false
   observedPat: Observable<PersonalInfo>
   name:string
+  @Input() id:string
 
   constructor(public dialog: MatDialog, private patService:PatientsService) {
   }

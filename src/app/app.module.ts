@@ -26,7 +26,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PatientfileComponent } from './patientfile/patientfile.component'; 
 
 
 
@@ -38,6 +39,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ConsultationsComponent,
     SearchComponent,
     AddPatientFormDialog,
+    PatientfileComponent,
   ],
   imports: [
     BrowserModule,

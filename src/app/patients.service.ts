@@ -27,12 +27,9 @@ export class PatientsService {
   addPatient(patient:string){
     return this.http.post(this.url,patient)
   } 
-  // private extractData(res:any){
-  //   let body = res
-  //   return body
-  // }
-  // private handleErrorObservable(error: any) {
-  //   console.error(error.message || error);
-  //   return throwError(error);
-  // }
+  
+  findPatientById(id:string): Observable<PersonalInfo>{
+    return this.http.get<PersonalInfo>(this.url+"/"+id)
+  }
+
 }
