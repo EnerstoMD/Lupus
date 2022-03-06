@@ -27,7 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { PatientfileComponent } from './patientfile/patientfile.component'; 
+import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patientfile.component'; 
 
 
 
@@ -40,6 +40,7 @@ import { PatientfileComponent } from './patientfile/patientfile.component';
     SearchComponent,
     AddPatientFormDialog,
     PatientfileComponent,
+    AddHistoryFormDialog,
   ],
   imports: [
     BrowserModule,
