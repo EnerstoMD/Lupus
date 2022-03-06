@@ -1,0 +1,127 @@
+<mat-card class="patientfile-card">
+    <mat-card-title>{{patFile.name}} {{patFile.lastname}}</mat-card-title>
+    <mat-card-subtitle>numero secu: {{patFile.ins_matricule}}</mat-card-subtitle>
+    <mat-card-content class="patientfile-card-content">
+        <div class="patientfile-section">
+            <!-- <mat-accordion class="information-accordion"> -->
+            
+                <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Informations</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab label="Infos">
+                    </mat-tab>
+                    <mat-tab label="Contact">
+                        <mat-selection-list #contactInfos [multiple]="false">
+                            <mat-list-option>
+                                <div mat-line>{{patFile.address}}</div>
+                                <div mat-line>{{patFile.postalcode}} {{patFile.city}}</div>
+                                <div mat-line>adresse</div>
+                            </mat-list-option>
+                            <mat-list-option>
+                                <div mat-line>{{patFile.email}}</div>
+                                <div mat-line>email</div>
+                            </mat-list-option>
+                            <mat-list-option>
+                                <div mat-line>{{patFile.phone}}</div>
+                                <div mat-line>telephone</div>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-tab>
+                    <mat-tab label="Protection sociale"></mat-tab>      
+                </mat-tab-group>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Maladies et sujets de sante
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Traitements
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Allergies
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Antecedents
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Hospitalisations
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Vaccinations
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
+
+        <!-- </mat-accordion> -->
+    </div>
+
+    <div class="patientfile-section">
+        <mat-card>
+            <mat-tab-group headerPosition="below">
+                <mat-tab label="Resume Consulation">
+                    <mat-list >
+                        <mat-list-item>
+                          <button mat-mini-fab color="accent"><mat-icon>arrow_forward</mat-icon></button>Demarrer consultation
+                        </mat-list-item>
+                        <mat-list-item>
+                            <mat-icon class="green-validate">done_all</mat-icon> consultations en regle
+                        </mat-list-item>
+                      </mat-list>             
+                </mat-tab>
+                <mat-tab label="Historique">Tableau des 5 dernieres consults </mat-tab>
+            </mat-tab-group>
+        </mat-card>        
+    </div>
+
+    </mat-card-content>
+    <div>
+        <a routerLink="/patients">retour recherche patient</a>
+    </div>
+</mat-card>

@@ -1,0 +1,19 @@
+<form class="add-history-form"  [formGroup]="addHistoryFormGroup" (ngSubmit)="addHistory()">   
+    <mat-form-field class="add-history-form-section" appearance="fill">
+        <mat-label>Nom de la maladie</mat-label>
+        <input matInput formControlName="disease">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="add-history-form-section" appearance="fill">
+        <mat-label>Lien familial</mat-label>
+        <input matInput formControlName="familyLink">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="add-history-form-section" appearance="fill">
+        <mat-label>Commentaires (facultatifs)</mat-label>
+        <textarea matInput formControlName="comment"> </textarea>
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button type="submit" >Ajouter antecedent</button>
+</form>
+  

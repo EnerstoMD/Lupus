@@ -1,0 +1,10 @@
+.patientfile-card-content{
+    display:grid;
+    grid-template-columns: 70% auto;
+}
+.patientfile-section{
+    margin: 1em;
+}
+.green-validate{
+    color:green;
+}
