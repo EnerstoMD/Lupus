@@ -29,9 +29,17 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patientfile.component'; 
 import {MatStepperModule} from '@angular/material/stepper';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarComponent } from './calendar/calendar.component';
 
-
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin ,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -68,7 +76,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatGridListModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    FullCalendarModule, 
   ],
   providers: [],
   bootstrap: [
@@ -77,7 +86,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     PatientsComponent,
     ConsultationsComponent,
     SearchComponent,
-    AddPatientFormDialog
+    AddPatientFormDialog,
+    CalendarComponent,
   ]
 })
 export class AppModule { }
