@@ -28,6 +28,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patientfile.component'; 
+import {MatStepperModule} from '@angular/material/stepper';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 
@@ -41,6 +43,7 @@ import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patient
     AddPatientFormDialog,
     PatientfileComponent,
     AddHistoryFormDialog,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patient
     MatDialogModule,
     MatGridListModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [
