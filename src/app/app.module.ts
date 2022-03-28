@@ -33,7 +33,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarComponent,EventDataDialog } from './calendar/calendar.component';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -52,6 +53,7 @@ FullCalendarModule.registerPlugins([
     PatientfileComponent,
     AddHistoryFormDialog,
     CalendarComponent,
+    EventDataDialog,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ FullCalendarModule.registerPlugins([
     MatProgressBarModule,
     MatSnackBarModule,
     MatStepperModule,
-    FullCalendarModule, 
+    FullCalendarModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [
@@ -88,6 +91,7 @@ FullCalendarModule.registerPlugins([
     SearchComponent,
     AddPatientFormDialog,
     CalendarComponent,
+    EventDataDialog,
   ]
 })
 export class AppModule { }

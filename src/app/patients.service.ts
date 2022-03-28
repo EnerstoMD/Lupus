@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map,catchError } from 'rxjs/operators';
 import { Observable, throwError} from 'rxjs';
 import { PersonalInfo } from './models/patientfile.models';
-
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientsService {
-  url = 'http://localhost:4545/patients'
+  url = environment.patapiUrl
   constructor(private http: HttpClient) { }
   opts = []
 
@@ -19,9 +19,9 @@ export class PatientsService {
     hp=hp.append("name",name)
 
     if (name == null){
-      return this.http.get<PersonalInfo[]>(this.url)
+      return this.http.get<PersonalInfo[]>(this.url+"/patients")
     }
-    return this.http.get<PersonalInfo[]>(this.url+"/search",{params:hp})
+    return this.http.get<PersonalInfo[]>(this.url+"/patients/search",{params:hp})
   }
 
   addPatient(patient:string){
@@ -29,7 +29,7 @@ export class PatientsService {
   } 
   
   findPatientById(id:string): Observable<PersonalInfo>{
-    return this.http.get<PersonalInfo>(this.url+"/"+id)
+    return this.http.get<PersonalInfo>(this.url+"/patients/"+id)
   }
 
 }
