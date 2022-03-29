@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Creer rendez-vous</h2>
+<form class="add-event-form" [formGroup]="addEventFormGroup" (ngSubmit)="addEvent()">
+    <mat-form-field class="add-event-form-section" appearance="fill">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="title">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="add-event-form-section" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="add-event-form-section" appearance="fill">
+        <mat-label>Date de debut</mat-label>
+        <input matInput formControlName="start">
+    </mat-form-field>
+    <br/>
+    <mat-form-field class="add-event-form-section" appearance="fill">
+        <mat-label>Date de fin</mat-label>
+        <input matInput formControlName="end">
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button type="submit" >Ajouter rendez-vous</button>
+</form>

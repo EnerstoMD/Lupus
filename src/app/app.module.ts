@@ -34,7 +34,8 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarComponent,EventDataDialog } from './calendar/calendar.component';
-import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {CreateEventDialog} from './calendar/createevent.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -54,6 +55,7 @@ FullCalendarModule.registerPlugins([
     AddHistoryFormDialog,
     CalendarComponent,
     EventDataDialog,
+    CreateEventDialog,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,7 @@ FullCalendarModule.registerPlugins([
     AddPatientFormDialog,
     CalendarComponent,
     EventDataDialog,
+    CreateEventDialog,
   ]
 })
 export class AppModule { }

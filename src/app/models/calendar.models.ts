@@ -4,5 +4,7 @@ export class Event {
         public title:string,
         public start:string,
         public end:string,
+        public description:string,
+        public is_confirmed:boolean,
     ){}
 }

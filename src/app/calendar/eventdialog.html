@@ -1,7 +1,17 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
+<h2 mat-dialog-title>{{data.title}}</h2>
 <div mat-dialog-content>
-    start: {{data.start}}<br/>
-    end: {{data.end}}<br/>
-    event-id: {{data.id}}<br/>
-    description: {{data.description}}
+    event-id: {{data.id}} <br/>
+    Debut: {{data.start}}<br/>
+    Fin: {{data.end}}<br/>
+    Description: {{data.description}}<br/>
+    confirme: {{data.is_confirmed}}
 </div>
+<mat-dialog-actions>
+    <div *ngIf="data.is_confirmed; else elseBlock">
+        <button mat-button (click)="unconfirmEvent()">Annuler Confirmation</button>
+    </div>
+    <ng-template #elseBlock>
+        <button mat-button (click)="confirmEvent()">Confirmer</button>
+    </ng-template>
+    <button mat-button color="warn" (click)="deleteEvent()">Supprimer Rendez-vous</button>
+</mat-dialog-actions>

@@ -1,16 +1,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
+import { CalendarOptions, DateSelectArg, EventClickArg } from '@fullcalendar/angular';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { Observable } from 'rxjs';
 import { CalendarService } from './calendar.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {CreateEventDialog} from './createevent.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface FCEvent{
   id:string,
   title:string,
   start:string,
   end:string,
-  description:string
+  description:string,
+  is_confirmed:boolean,
 }
 
 @Component({
@@ -20,7 +23,10 @@ export interface FCEvent{
   providers:[CalendarService]
 })
 export class CalendarComponent implements OnInit {
-  constructor(public eventDialog: MatDialog,private calService:CalendarService) { }
+  constructor(
+    public eventDialog: MatDialog,
+    private calService:CalendarService
+    ) { }
   
   evs: Observable<Event[]>
   calendarOptions: CalendarOptions = {
@@ -33,17 +39,10 @@ export class CalendarComponent implements OnInit {
       startTime:'8:00',
       endTime:'20:00'
     },
+    events:[],
     eventClick: this.openEvDialog.bind(this),
-    customButtons:{
-      addEventButton:{
-        text:'add event',
-        click: function(){
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-            alert('Invalid date.');
-          }
-        }
-      }
+    select: this.openCreateEventDialog.bind(this),
+    selectable: true,
   };
 
   ngOnInit(): void {
@@ -55,6 +54,11 @@ export class CalendarComponent implements OnInit {
     this.evs.subscribe(
       events =>{
         this.calendarOptions.events = events
+        this.calendarOptions.events.forEach(ev => {
+          if (ev['is_confirmed']) {
+            ev.color = 'green'
+          }
+        })
       }
     )
   }
@@ -63,15 +67,29 @@ export class CalendarComponent implements OnInit {
     const dialogRef=this.eventDialog.open(EventDataDialog,{
       data:{
         title:info.event.title,
-        start:info.event.start,
+        start:info.event.start?.getHours()+':'+info.event.start?.getMinutes(),
         end:info.event.end,
         id:info.event.id,
         description:info.event.extendedProps['description'],
+        is_confirmed:info.event.extendedProps['is_confirmed']
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.fetchEvents()
+    });
+  }
+
+  openCreateEventDialog(info:DateSelectArg){
+    const dialogRef=this.eventDialog.open(CreateEventDialog,{
+      data:{
+        start:info.startStr,
+        end:info.endStr
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.fetchEvents()
     });
   }
 }
@@ -81,5 +99,28 @@ export class CalendarComponent implements OnInit {
   templateUrl:'eventdialog.html',
 })
 export class EventDataDialog{
-  constructor(@Inject(MAT_DIALOG_DATA) public data: FCEvent){}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: FCEvent,
+    private calService:CalendarService,
+    public dialogRef:MatDialogRef<EventDataDialog>,
+    private _snackBar: MatSnackBar
+    ){}
+  unconfirmEvent(){
+      this.calService.unconfirmEvent(this.data.id).subscribe(data =>{
+        this.dialogRef.close()
+      })
+      
+  }
+  confirmEvent(){
+    this.calService.confirmEvent(this.data.id).subscribe(data =>{
+      this.dialogRef.close()
+    })
+  }
+  deleteEvent(){
+    //add a control to confirm!!!
+    this.calService.deleteEvent(this.data.id).subscribe(data =>{
+      this.dialogRef.close()
+      this._snackBar.open("Rendez-vous supprime en base", "OK")
+    })
+  }
 }
