@@ -2,7 +2,7 @@
 <form class="add-event-form" [formGroup]="addEventFormGroup" (ngSubmit)="addEvent()">
     <mat-form-field class="add-event-form-section" appearance="fill">
         <mat-label>Titre</mat-label>
-        <input matInput formControlName="title">
+        <input matInput formControlName="title" required>
     </mat-form-field>
     <br/>
     <mat-form-field class="add-event-form-section" appearance="fill">
