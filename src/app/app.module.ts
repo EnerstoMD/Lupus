@@ -36,6 +36,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { CalendarComponent,EventDataDialog } from './calendar/calendar.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {CreateEventDialog} from './calendar/createevent.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -83,6 +84,7 @@ FullCalendarModule.registerPlugins([
     MatStepperModule,
     FullCalendarModule,
     MatTooltipModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [

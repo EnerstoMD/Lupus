@@ -1,24 +1,55 @@
-<h2 mat-dialog-title>Creer rendez-vous</h2>
-<form class="add-event-form" [formGroup]="addEventFormGroup" (ngSubmit)="addEvent()">
-    <mat-form-field class="add-event-form-section" appearance="fill">
-        <mat-label>Titre</mat-label>
-        <input matInput formControlName="title" required>
-    </mat-form-field>
-    <br/>
-    <mat-form-field class="add-event-form-section" appearance="fill">
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description">
-    </mat-form-field>
-    <br/>
-    <mat-form-field class="add-event-form-section" appearance="fill">
-        <mat-label>Date de debut</mat-label>
-        <input matInput formControlName="start">
-    </mat-form-field>
-    <br/>
-    <mat-form-field class="add-event-form-section" appearance="fill">
-        <mat-label>Date de fin</mat-label>
-        <input matInput formControlName="end">
-    </mat-form-field>
-    <br/>
-    <button mat-raised-button type="submit" >Ajouter rendez-vous</button>
+<form class="event-form" [formGroup]="addEventFormGroup" (ngSubmit)="addEvent()">
+    <h2 mat-dialog-title>Creer rendez-vous</h2>
+
+    <h3 mat-dialog-title>
+        <mat-form-field class="event-form-section-title" appearance="fill">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="title" required>
+        </mat-form-field>
+    </h3>
+    
+    <div mat-dialog-content>
+        <mat-form-field class="event-form-section-desc" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+    
+    <table>
+        <tr>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Date de debut</mat-label>
+                    <input matInput formControlName="startdate">
+                    <mat-hint>format: 2002-12-25</mat-hint>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Heure de debut</mat-label>
+                    <input matInput formControlName="starttime">
+                    <mat-hint>format: 18:34</mat-hint>
+                </mat-form-field>
+            </td> 
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Date de fin</mat-label>
+                    <input matInput formControlName="enddate">
+                    <mat-hint>format: 2002-12-25</mat-hint>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Heure de fin</mat-label>
+                    <input matInput formControlName="endtime">
+                    <mat-hint>format: 18:44</mat-hint>
+                </mat-form-field>
+            </td> 
+        </tr>
+    </table>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" ><mat-icon color="accent">add_circle</mat-icon> rendez-vous</button>
+    </div>
 </form>

@@ -2,3 +2,23 @@
     max-width: 90%;
     text-justify: auto;
 }
+
+.event-form{
+    min-width: 200px;
+    max-width: 500px;
+    width: 100% ;
+    padding-right: 10px;
+    display: grid;
+    
+}
+.event-form-section-title{
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline;
+}
+.event-form-section-desc{
+    margin-bottom: 10px;
+    display: inline;
+    height: 100px;
+}

@@ -1,17 +1,66 @@
-<h2 mat-dialog-title>{{data.title}}</h2>
-<div mat-dialog-content>
-    event-id: {{data.id}} <br/>
-    Debut: {{data.start}}<br/>
-    Fin: {{data.end}}<br/>
-    Description: {{data.description}}<br/>
-    confirme: {{data.is_confirmed}}
-</div>
-<mat-dialog-actions>
-    <div *ngIf="data.is_confirmed; else elseBlock">
-        <button mat-button (click)="unconfirmEvent()">Annuler Confirmation</button>
+<form class="event-form" [formGroup]="eventFormGroup">
+    <h2 mat-dialog-title>
+        <mat-form-field class="w3-card-4 event-form-section-title " appearance="outline">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="title" />
+            <mat-hint *ngIf="data.is_confirmed" align="end">rendez-vous confirme <mat-icon color="warn">check</mat-icon></mat-hint>         
+        </mat-form-field>
+    </h2>
+    
+    <div mat-dialog-content>
+        <mat-form-field class="event-form-section-desc" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+    
+    <table>
+        <tr>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Date de debut</mat-label>
+                    <input matInput formControlName="startdate">
+                    <mat-hint>format: 2002-12-25</mat-hint>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Heure de debut</mat-label>
+                    <input matInput formControlName="starttime">
+                    <mat-hint>format: 18:34</mat-hint>
+                </mat-form-field>
+            </td> 
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Date de fin</mat-label>
+                    <input matInput formControlName="enddate">
+                    <mat-hint>format: 2002-12-25</mat-hint>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="event-form-section-date" appearance="fill">
+                    <mat-label>Heure de fin</mat-label>
+                    <input matInput formControlName="endtime">
+                    <mat-hint>format: 18:44</mat-hint>
+                </mat-form-field>
+            </td> 
+        </tr>
+    </table>
+</form>
+<div mat-dialog-actions>
+    <div *ngIf="eventFormGroup.disabled; else elseBlock">
+        <div *ngIf="data.is_confirmed; else elseBlock">
+            <button mat-raised-button  (click)="unconfirmEvent()"><mat-icon>cancel</mat-icon> Annuler Confirmation</button>
+        </div>
+        <ng-template #elseBlock>
+            <button mat-raised-button (click)="confirmEvent()"><mat-icon>send</mat-icon> Confimer rendez-vous</button>
+        </ng-template>
+        <button mat-button color="accent" (click)="modifyEvent()"><mat-icon>mode_edit</mat-icon></button>
     </div>
     <ng-template #elseBlock>
-        <button mat-button (click)="confirmEvent()">Confirmer</button>
+        <button mat-raised-button color="primary" (click)="updateEvent()"><mat-icon>save</mat-icon></button>
+        <button mat-button color="warn" (click)="deleteEvent()"><mat-icon>delete</mat-icon></button>
     </ng-template>
-    <button mat-button color="warn" (click)="deleteEvent()">Supprimer Rendez-vous</button>
-</mat-dialog-actions>
+</div>

@@ -6,6 +6,7 @@ import { CalendarService } from './calendar.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {CreateEventDialog} from './createevent.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface FCEvent{
   id:string,
@@ -40,9 +41,11 @@ export class CalendarComponent implements OnInit {
       endTime:'20:00'
     },
     events:[],
+    eventColor: 'lightslategray',
     eventClick: this.openEvDialog.bind(this),
     select: this.openCreateEventDialog.bind(this),
     selectable: true,
+    defaultTimedEventDuration: '00:30',
   };
 
   ngOnInit(): void {
@@ -55,8 +58,8 @@ export class CalendarComponent implements OnInit {
       events =>{
         this.calendarOptions.events = events
         this.calendarOptions.events.forEach(ev => {
-          if (ev['is_confirmed']) {
-            ev.color = 'green'
+          if (ev['is_confirmed']=='true') {
+            ev.color = 'dodgerblue'
           }
         })
       }
@@ -64,14 +67,14 @@ export class CalendarComponent implements OnInit {
   }
 
   openEvDialog(info:EventClickArg){
-    const dialogRef=this.eventDialog.open(EventDataDialog,{
+    const dialogRef=this.eventDialog.open(EventDataDialog,{ 
       data:{
         title:info.event.title,
-        start:info.event.start?.getHours()+':'+info.event.start?.getMinutes(),
-        end:info.event.end,
+        start:info.event.startStr,
+        end:info.event.endStr,
         id:info.event.id,
         description:info.event.extendedProps['description'],
-        is_confirmed:info.event.extendedProps['is_confirmed']
+        is_confirmed:info.event.extendedProps['is_confirmed']=='true'?true:false
       }
     });
 
@@ -97,22 +100,42 @@ export class CalendarComponent implements OnInit {
 @Component({
   selector:'event-dialog',
   templateUrl:'eventdialog.html',
+  styleUrls: ['./calendar.component.css']
 })
-export class EventDataDialog{
+export class EventDataDialog implements OnInit{
+  eventFormGroup = new FormGroup({
+    title: new FormControl(this.data.title, Validators.required),
+    startdate: new FormControl(this.calService.getDateFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
+    starttime: new FormControl(this.calService.getTimeFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-1][0-9]|2[0-3]):([0-5][0-9])$")]),
+    enddate: new FormControl(this.calService.getDateFromFCEvent(this.data.end),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
+    endtime: new FormControl(this.calService.getTimeFromFCEvent(this.data.end),[Validators.required,Validators.pattern("^([0-1][0-9]|2[0-3]):([0-5][0-9])$")]),
+    description: new FormControl(this.data.description),
+});
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: FCEvent,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private calService:CalendarService,
     public dialogRef:MatDialogRef<EventDataDialog>,
     private _snackBar: MatSnackBar
-    ){}
+    ){
+    }
+  ngOnInit(): void {
+    this.eventFormGroup.disable()
+  }
   unconfirmEvent(){
       this.calService.unconfirmEvent(this.data.id).subscribe(data =>{
         this.dialogRef.close()
+        this._snackBar.open("Rendez-vous annule","",{
+          duration:2000
+        })
       })
       
   }
   confirmEvent(){
     this.calService.confirmEvent(this.data.id).subscribe(data =>{
+      this._snackBar.open("Rendez-vous confirme","ok",{
+        duration:2000
+      })
       this.dialogRef.close()
     })
   }
@@ -122,5 +145,30 @@ export class EventDataDialog{
       this.dialogRef.close()
       this._snackBar.open("Rendez-vous supprime en base", "OK")
     })
+  }
+  updateEvent(){
+    if(!this.eventFormGroup.valid){
+      this._snackBar.open("Merci de remplir correctement le formulaire" , "", {
+          duration: 2000,
+      });
+      return;
+  }
+    let eventToUpdate = {
+      id:this.data.id,
+      title:this.eventFormGroup.value.title,
+      start:this.eventFormGroup.value.startdate+'T'+this.eventFormGroup.value.starttime+":00+02:00",
+      end:this.eventFormGroup.value.enddate+'T'+this.eventFormGroup.value.endtime+":00+02:00",
+      description:this.eventFormGroup.value.description,
+      is_confirmed:'false'
+    }
+    this.calService.updateEvent(this.data.id,eventToUpdate).subscribe(data =>{
+      this.dialogRef.close()
+      this._snackBar.open("Rendez-vous mis a jour","OK",{
+        duration:2000})
+    })
+  }
+
+  modifyEvent(){
+    this.eventFormGroup.enable()
   }
 }

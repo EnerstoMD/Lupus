@@ -32,6 +32,11 @@ export class CalendarService {
             retry(1),catchError(this.handleError))
     }
 
+    updateEvent(id:string,event:any){
+        return this.http.patch(this.url+"/calendar/"+id,event).pipe(
+            retry(1),catchError(this.handleError))
+    }
+
     private handleError(error: HttpHeaderResponse | any) {
         let errMsg: string;
         if (error.error instanceof ErrorEvent) {
@@ -45,5 +50,12 @@ export class CalendarService {
         console.error(errMsg);
         window.alert(errMsg);
         return throwError(errMsg);
-      }
+    }
+
+    getDateFromFCEvent(date:string):string{
+        return date.substring(0,10)
+    }
+    getTimeFromFCEvent(date:string):string{
+        return date.substring(11,16)
+    }
 }
