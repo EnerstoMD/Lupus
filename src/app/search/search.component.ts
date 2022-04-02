@@ -7,6 +7,7 @@ import {PatientsService} from '../patients.service'
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-  myControl = new FormControl()
+  searchControl = new FormControl()
   patients: PersonalInfo[] = []
   errorMessage = '';
   filteredPatients: Observable<PersonalInfo[]>
@@ -31,10 +32,10 @@ export class SearchComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  openDialog() {
+  addPatient() {
     const dialogRef = this.dialog.open(
-      AddPatientFormDialog,
-      { data:{name: this.name}}
+      PatientInfoFormDialog,
+      { data:{name: this.searchControl.value}}
       );
 
     dialogRef.afterClosed().subscribe(result => {
@@ -44,7 +45,7 @@ export class SearchComponent implements OnInit{
 
   searchPatient(){
     this.listIsVisible = true
-    this.filteredPatients=this.patService.searchPatient(this.myControl.value)
+    this.filteredPatients=this.patService.searchPatient(this.searchControl.value)
     this.filteredPatients.subscribe(
       patients => {
         this.patients = patients
@@ -55,38 +56,47 @@ export class SearchComponent implements OnInit{
   }
 }
 
-export interface DialogData{
-  name: string;
-}
-
 @Component({
-  selector: 'addpatientform-dialog',
-  templateUrl: 'addpatientform.html',
+  selector: 'patientinfoform-dialog',
+  templateUrl: 'patientinfoform.html',
+  styleUrls: ['./search.component.css']
 })
-export class AddPatientFormDialog {
-  addPatFormGroup = new FormGroup({
-    name :new FormControl('',[Validators.required]),
-    lastname : new FormControl(),
-    gender : new FormControl(),
-    firstnames : new FormControl(),
-    birthname : new FormControl(),
-    ins_matricule : new FormControl(),
-    address : new FormControl(),
-    phone : new FormControl(),
-    email: new FormControl('',[Validators.email]),
-    city : new FormControl(),
-    postalcode : new FormControl(),
+export class PatientInfoFormDialog implements OnInit{
+  public patInfoFormGroup = new FormGroup({
+    name :new FormControl(this.data.name,[Validators.required]),
+    lastname : new FormControl(this.data.lastname,[Validators.required]),
+    gender : new FormControl(this.data.gender),
+    firstnames : new FormControl(this.data.firstnames),
+    birthname : new FormControl(this.data.birthname),
+    ins_matricule : new FormControl(this.data.ins_matricule),
+    address : new FormControl(this.data.address),
+    phone : new FormControl(this.data.phone),
+    email: new FormControl(this.data.email,[Validators.email]),
+    city : new FormControl(this.data.city),
+    postalcode : new FormControl(this.data.postalcode),
   })
-
+  modifyState = false
+  
   constructor(
-    public dialogRef: MatDialogRef<AddPatientFormDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public dialogRef: MatDialogRef<PatientInfoFormDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: PersonalInfo,
     private patService:PatientsService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ){}
 
+  ngOnInit(): void {
+    if (this.data.id != null){
+      this.modifyState = true
+    }
+  }
+
   addPatient(): void{
-    let patObj = this.addPatFormGroup.getRawValue()
+    if(!this.patInfoFormGroup.valid){
+      this.openSnackBar("Merci de remplir correctement les champs", "OK")
+      return
+    }
+    let patObj = this.patInfoFormGroup.getRawValue()
     let serializedForm = JSON.stringify(patObj)
     this.patService.addPatient(serializedForm).subscribe(
       data => this.openSnackBar("Patient ajoute dans base de donnees","OK"),
@@ -94,8 +104,20 @@ export class AddPatientFormDialog {
     )
     this.dialogRef.close()
   }
-
+  updatePatientInfos(): void{
+    if(!this.patInfoFormGroup.valid){
+      this.openSnackBar("Merci de remplir correctement les champs", "OK")
+      return
+    }
+    let patientToUptObj = this.patInfoFormGroup.getRawValue()
+    this.patService.updatePatientInfos(this.data.id,patientToUptObj).subscribe(
+      data => this.openSnackBar("Informations de patient modifies dans base de donnees","OK"),
+      error => console.error("couldn't post because", error)
+    )
+    this.dialogRef.close()
+    this.router.navigate(['/patients/'+this.data.id])
+  }
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this._snackBar.open(message, action,{duration: 2000});
   }
 }

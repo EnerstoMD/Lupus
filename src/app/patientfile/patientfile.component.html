@@ -5,13 +5,11 @@
         <div class="patientfile-section">
             <!-- <mat-accordion class="information-accordion"> -->
             
-                <mat-expansion-panel>
+            <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>Informations</mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-tab-group>
-                    <mat-tab label="Infos">
-                    </mat-tab>
                     <mat-tab label="Contact">
                         <mat-selection-list #contactInfos [multiple]="false">
                             <mat-list-option>
@@ -29,7 +27,31 @@
                             </mat-list-option>
                         </mat-selection-list>
                     </mat-tab>
-                    <mat-tab label="Protection sociale"></mat-tab>      
+                    <mat-tab label="Infos">
+                        <mat-selection-list #infos [multiple]="false">
+                            <mat-list-option>
+                                <div mat-line>{{patFile.name}}</div>
+                                <div mat-line>prenom</div>    
+                            </mat-list-option>
+                            <mat-list-option>
+                                <div mat-line>{{patFile.lastname}}</div>
+                                <div mat-line>nom de famille</div>
+                            </mat-list-option>
+                            <mat-list-option>
+                                <div mat-line>{{patFile.ins_matricule}}</div>
+                                <div mat-line>numero de secu</div>
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </mat-tab>
+                    
+                    <mat-tab label="Protection sociale" disabled></mat-tab>
+                    <mat-tab label="Parente" disabled></mat-tab>
+                    <mat-tab label="Modifier info" class="modifierinfo-section">
+                        <div class="modifierinfo-button">
+                            <button mat-button (click)="modifyPersonalInfoDialog()" color="basic"><mat-icon>edit</mat-icon>Modifier</button>
+                        </div>
+                        
+                    </mat-tab>       
                 </mat-tab-group>
             </mat-expansion-panel>
 
@@ -98,11 +120,21 @@
                     <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
                 </mat-selection-list>
             </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    Commentaires
+                </mat-expansion-panel-header>
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option>
+                    </mat-list-option>
+                    <button mat-mini-fab color="accent" (click)="openHistoryDialog()"><mat-icon>plus_one</mat-icon></button>
+                </mat-selection-list>
+            </mat-expansion-panel>
 
         <!-- </mat-accordion> -->
     </div>
 
-    <div class="patientfile-section">
+    <div class="patientfile-section" hidden>
         <mat-card>
             <mat-tab-group headerPosition="below">
                 <mat-tab label="Resume Consulation">
@@ -122,6 +154,6 @@
 
     </mat-card-content>
     <div>
-        <a routerLink="/patients">retour recherche patient</a>
+        <a routerLink="/patients">< retour recherche patient</a>
     </div>
 </mat-card>

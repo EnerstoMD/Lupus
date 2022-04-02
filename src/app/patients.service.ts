@@ -18,7 +18,7 @@ export class PatientsService {
     let hp = new HttpParams
     hp=hp.append("name",name)
 
-    if (name == null){
+    if (name == null||name==""){
       return this.http.get<PersonalInfo[]>(this.url+"/patients")
     }
     return this.http.get<PersonalInfo[]>(this.url+"/patients/search",{params:hp})
@@ -26,7 +26,10 @@ export class PatientsService {
 
   addPatient(patient:string){
     return this.http.post(this.url,patient)
-  } 
+  }
+  updatePatientInfos(id:string,patientInfos:PersonalInfo){
+    return this.http.patch(this.url+"/patients/"+id,patientInfos)
+  }
   
   findPatientById(id:string): Observable<PersonalInfo>{
     return this.http.get<PersonalInfo>(this.url+"/patients/"+id)

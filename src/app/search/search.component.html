@@ -6,13 +6,13 @@
             <input type="text"
                     placeholder="recherche sensible a la casse"
                     matInput
-                    [formControl]="myControl"
+                    [formControl]="searchControl"
                     >
             </mat-form-field>
         </form>
     </div>
     <div class="search-or-add-patient-grid-item">
-        <button mat-fab (click)="openDialog()"><mat-icon>person_add</mat-icon></button>
+        <button mat-fab (click)="addPatient()"><mat-icon>person_add</mat-icon></button>
         Ajouter Patient
     </div>
 </div>

@@ -25,3 +25,20 @@
     max-width: 20%;
     display: flex;
 }
+
+.patient-info-form{
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    height:auto;
+    margin-bottom: 3em;
+    grid-gap: 1em;
+}
+.patient-form-numsecu{
+   width: 100%;
+}
+.patient-form-gender{
+    max-width: 15%;
+}
+.patient-form-address{
+    width: 100%;
+}

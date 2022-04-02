@@ -6,6 +6,8 @@ import { PatientsService } from '../patients.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import{PatientInfoFormDialog} from '../search/search.component'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patientfile',
@@ -20,6 +22,7 @@ export class PatientfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private patService: PatientsService,
     public dialog: MatDialog,
   ) { }
@@ -34,6 +37,18 @@ export class PatientfileComponent implements OnInit {
       },
     )
   }
+
+  fetchPatientInfo(): void {
+    this.obsPatFile = this.patService.findPatientById(this.route.snapshot.params['id'])
+    this.obsPatFile.subscribe(
+      patient => this.patFile = patient,
+      error => {
+        this.patFile.name = error,
+        console.log("error!! ")
+      },
+    )
+  }
+
   openHistoryDialog():void {
     const dialogRef = this.dialog.open(
       AddHistoryFormDialog,
@@ -42,6 +57,28 @@ export class PatientfileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+  modifyPersonalInfoDialog():void {
+    const dialogRef = this.dialog.open(
+      PatientInfoFormDialog,
+      { data:this.patFile},
+      );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.fetchPatientInfo()
+    });
+  }
+  consultPersonalInfoDialog():void {
+    const dialogRef = this.dialog.open(
+      PatientInfoFormDialog,
+      { data:this.patFile},
+      );
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.fetchPatientInfo()
     });
   }
 }
