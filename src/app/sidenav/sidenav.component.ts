@@ -9,7 +9,6 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

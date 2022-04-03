@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>
+         <h1>Hello</h1>
+    </mat-card-title>
+     <mat-card-content>
+           <form [formGroup]="loginFormGroup" (ngSubmit)="seConnecter()">
+             <mat-form-field>
+                 <input matInput placeholder="Email" formControlName="email">
+             </mat-form-field>
+             <mat-form-field>
+                 <input matInput placeholder="Password" formControlName="password" [type]="hidepwd ? 'password':'text'">
+             </mat-form-field>
+             <button mat-raised-button color="primary" type="submit">Se connecter</button>
+           </form>
+     </mat-card-content>
+ </mat-card>

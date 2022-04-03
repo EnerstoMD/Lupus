@@ -18,7 +18,7 @@ import { SearchComponent,PatientInfoFormDialog } from './search/search.component
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -37,6 +37,9 @@ import { CalendarComponent,EventDataDialog } from './calendar/calendar.component
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {CreateEventDialog} from './calendar/createevent.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { HomeComponent } from './home/home.component';
+import {AuthInterceptor} from './auth.interceptor';
+import { LoginComponent } from './login/login.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -57,6 +60,8 @@ FullCalendarModule.registerPlugins([
     CalendarComponent,
     EventDataDialog,
     CreateEventDialog,
+    HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +91,9 @@ FullCalendarModule.registerPlugins([
     MatTooltipModule,
     MatDatepickerModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
   bootstrap: [
     AppComponent,
     SidenavComponent,

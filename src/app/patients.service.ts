@@ -19,20 +19,20 @@ export class PatientsService {
     hp=hp.append("name",name)
 
     if (name == null||name==""){
-      return this.http.get<PersonalInfo[]>(this.url+"/patients")
+      return this.http.get<PersonalInfo[]>(this.url+"/patient")
     }
-    return this.http.get<PersonalInfo[]>(this.url+"/patients/search",{params:hp})
+    return this.http.get<PersonalInfo[]>(this.url+"/patient/search",{params:hp})
   }
 
   addPatient(patient:string){
     return this.http.post(this.url,patient)
   }
   updatePatientInfos(id:string,patientInfos:PersonalInfo){
-    return this.http.patch(this.url+"/patients/"+id,patientInfos)
+    return this.http.patch(this.url+"/patient/"+id,patientInfos)
   }
   
   findPatientById(id:string): Observable<PersonalInfo>{
-    return this.http.get<PersonalInfo>(this.url+"/patients/"+id)
+    return this.http.get<PersonalInfo>(this.url+"/patient/"+id)
   }
 
 }
