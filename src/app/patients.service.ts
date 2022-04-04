@@ -25,7 +25,7 @@ export class PatientsService {
   }
 
   addPatient(patient:string){
-    return this.http.post(this.url,patient)
+    return this.http.post(this.url+"/patient",patient)
   }
   updatePatientInfos(id:string,patientInfos:PersonalInfo){
     return this.http.patch(this.url+"/patient/"+id,patientInfos)
