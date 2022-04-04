@@ -90,7 +90,7 @@
     <button mat-raised-button color="primary" (click)="updatePatientInfos()"><mat-icon>send</mat-icon>Modifier</button>
   </div>
   <div *ngIf="!modifyState">
-    <button mat-raised-button type="submit" (ngSubmit)="addPatient()"><mat-icon color="accent">person_add</mat-icon>Ajouter Patient</button>
+    <button mat-raised-button type="submit" (click)="addPatient()"><mat-icon color="accent">person_add</mat-icon>Ajouter Patient</button>
   </div>
 </mat-dialog-actions>
 </form>
