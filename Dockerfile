@@ -3,7 +3,6 @@ FROM node:latest as node
 WORKDIR /app
 COPY . .
 ENV ENVIRONMENT=production
-ENV PATAPI_URL=http://localhost:4545
 RUN npm install
 RUN npm run build --prod
 
