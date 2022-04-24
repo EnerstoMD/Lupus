@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginFormGroup=new FormGroup({
     email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',Validators.required)
@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar,
     ) { }
 
-  ngOnInit(): void {
-  }
   seConnecter(){
     if (!this.loginFormGroup.valid){
       this._snackBar.open("Merci de remplir correctement le formulaire" , "", {

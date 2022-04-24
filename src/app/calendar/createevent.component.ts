@@ -5,11 +5,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: "createevent-dialog",
+    selector: "app-createevent-dialog",
     templateUrl: "./createevent-dialog.html",
     styleUrls: ['./calendar.component.css'],
 })
-export class CreateEventDialog {
+export class CreateEventDialogComponent {
 
     addEventFormGroup = new FormGroup({
         title: new FormControl(),
@@ -20,7 +20,7 @@ export class CreateEventDialog {
         description: new FormControl(),
     });
     constructor(
-        public dialogRef: MatDialogRef<CreateEventDialog>,
+        public dialogRef: MatDialogRef<CreateEventDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private calService:CalendarService,
         private _snackBar: MatSnackBar
