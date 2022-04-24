@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  patapiUrl: $ENV.PATAPI_URL+'/v1',
+  patapiUrl: 'PATAPI_BASE_URL'+'/v1',
 };
