@@ -11,3 +11,5 @@ FROM nginx:alpine
 COPY --from=node /app/dist/lupus /usr/share/nginx/html
 COPY --from=node /app/scripts/replace_api_url.sh /usr/local/bin/replace_api_url.sh
 CMD ["/bin/sh", "/usr/local/bin/replace_api_url.sh"]
+
+EXPOSE 80
