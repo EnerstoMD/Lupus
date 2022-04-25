@@ -6,7 +6,7 @@ import { PatientsService } from '../patients.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import{PatientInfoFormDialog} from '../search/search.component'
+import{PatientInfoFormDialogComponent} from '../search/search.component'
 import { Router } from '@angular/router';
 
 @Component({
@@ -51,7 +51,7 @@ export class PatientfileComponent implements OnInit {
 
   openHistoryDialog():void {
     const dialogRef = this.dialog.open(
-      AddHistoryFormDialog,
+      AddHistoryFormDialogComponent,
       { data:{name: this.longText}}
       );
 
@@ -61,7 +61,7 @@ export class PatientfileComponent implements OnInit {
   }
   modifyPersonalInfoDialog():void {
     const dialogRef = this.dialog.open(
-      PatientInfoFormDialog,
+      PatientInfoFormDialogComponent,
       { data:this.patFile},
       );
 
@@ -72,7 +72,7 @@ export class PatientfileComponent implements OnInit {
   }
   consultPersonalInfoDialog():void {
     const dialogRef = this.dialog.open(
-      PatientInfoFormDialog,
+      PatientInfoFormDialogComponent,
       { data:this.patFile},
       );
     
@@ -88,10 +88,10 @@ export interface DialogData{
 }
 
 @Component({
-  selector: 'addhistoryform-dialog',
+  selector: 'app-addhistoryform-dialog',
   templateUrl: './addhistoryform.html',
 })
-export class AddHistoryFormDialog{
+export class AddHistoryFormDialogComponent{
 
   addHistoryFormGroup = new FormGroup({
     disease: new FormControl(),
@@ -100,7 +100,7 @@ export class AddHistoryFormDialog{
   })
 
   constructor(
-    public dialogRef: MatDialogRef<AddHistoryFormDialog>,
+    public dialogRef: MatDialogRef<AddHistoryFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private patService:PatientsService,
     private _snackBar: MatSnackBar

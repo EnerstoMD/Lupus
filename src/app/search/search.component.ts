@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit{
+export class SearchComponent{
   searchControl = new FormControl()
   patients: PersonalInfo[] = []
   errorMessage = '';
@@ -29,12 +29,9 @@ export class SearchComponent implements OnInit{
   constructor(public dialog: MatDialog, private patService:PatientsService) {
   }
 
-  ngOnInit(): void {
-  }
-
   addPatient() {
     const dialogRef = this.dialog.open(
-      PatientInfoFormDialog,
+      PatientInfoFormDialogComponent,
       { data:{name: this.searchControl.value}}
       );
 
@@ -57,11 +54,11 @@ export class SearchComponent implements OnInit{
 }
 
 @Component({
-  selector: 'patientinfoform-dialog',
+  selector: 'app-patientinfoform-dialog',
   templateUrl: 'patientinfoform.html',
   styleUrls: ['./search.component.css']
 })
-export class PatientInfoFormDialog implements OnInit{
+export class PatientInfoFormDialogComponent implements OnInit{
   public patInfoFormGroup = new FormGroup({
     name :new FormControl(this.data.name,[Validators.required]),
     lastname : new FormControl(this.data.lastname,[Validators.required]),
@@ -78,7 +75,7 @@ export class PatientInfoFormDialog implements OnInit{
   modifyState = false
   
   constructor(
-    public dialogRef: MatDialogRef<PatientInfoFormDialog>,
+    public dialogRef: MatDialogRef<PatientInfoFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PersonalInfo,
     private patService:PatientsService,
     private _snackBar: MatSnackBar,

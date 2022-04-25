@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PatientsComponent } from './patients/patients.component';
 import { ConsultationsComponent } from './consultations/consultations.component';
-import { SearchComponent,PatientInfoFormDialog } from './search/search.component';
+import { SearchComponent,PatientInfoFormDialogComponent } from './search/search.component';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,15 +27,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { PatientfileComponent,AddHistoryFormDialog } from './patientfile/patientfile.component'; 
+import { PatientfileComponent,AddHistoryFormDialogComponent } from './patientfile/patientfile.component'; 
 import {MatStepperModule} from '@angular/material/stepper';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { CalendarComponent,EventDataDialog } from './calendar/calendar.component';
+import { CalendarComponent,EventDataDialogComponent } from './calendar/calendar.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {CreateEventDialog} from './calendar/createevent.component';
+import {CreateEventDialogComponent} from './calendar/createevent.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HomeComponent } from './home/home.component';
 import {AuthInterceptor} from './auth.interceptor';
@@ -54,12 +54,12 @@ FullCalendarModule.registerPlugins([
     PatientsComponent,
     ConsultationsComponent,
     SearchComponent,
-    PatientInfoFormDialog,
+    PatientInfoFormDialogComponent,
     PatientfileComponent,
-    AddHistoryFormDialog,
+    AddHistoryFormDialogComponent,
     CalendarComponent,
-    EventDataDialog,
-    CreateEventDialog,
+    EventDataDialogComponent,
+    CreateEventDialogComponent,
     HomeComponent,
     LoginComponent,
   ],
@@ -100,10 +100,10 @@ FullCalendarModule.registerPlugins([
     PatientsComponent,
     ConsultationsComponent,
     SearchComponent,
-    PatientInfoFormDialog,
+    PatientInfoFormDialogComponent,
     CalendarComponent,
-    EventDataDialog,
-    CreateEventDialog,
+    EventDataDialogComponent,
+    CreateEventDialogComponent,
   ]
 })
 export class AppModule { }

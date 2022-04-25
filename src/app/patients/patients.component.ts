@@ -6,10 +6,8 @@ import {AppComponent} from '../app.component'
   templateUrl: './patients.component.html',
   styleUrls: ['./patients.component.css']
 })
-export class PatientsComponent implements OnInit {
+export class PatientsComponent {
   
   constructor() { }
-  ngOnInit(): void {
-  }
 
 }

@@ -4,7 +4,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { Observable } from 'rxjs';
 import { CalendarService } from './calendar.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {CreateEventDialog} from './createevent.component';
+import {CreateEventDialogComponent} from './createevent.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -67,7 +67,7 @@ export class CalendarComponent implements OnInit {
   }
 
   openEvDialog(info:EventClickArg){
-    const dialogRef=this.eventDialog.open(EventDataDialog,{ 
+    const dialogRef=this.eventDialog.open(EventDataDialogComponent,{ 
       data:{
         title:info.event.title,
         start:info.event.startStr,
@@ -84,7 +84,7 @@ export class CalendarComponent implements OnInit {
   }
 
   openCreateEventDialog(info:DateSelectArg){
-    const dialogRef=this.eventDialog.open(CreateEventDialog,{
+    const dialogRef=this.eventDialog.open(CreateEventDialogComponent,{
       data:{
         start:info.startStr,
         end:info.endStr
@@ -98,11 +98,11 @@ export class CalendarComponent implements OnInit {
 }
 
 @Component({
-  selector:'event-dialog',
+  selector:'app-event-dialog',
   templateUrl:'eventdialog.html',
   styleUrls: ['./calendar.component.css']
 })
-export class EventDataDialog implements OnInit{
+export class EventDataDialogComponent implements OnInit{
   eventFormGroup = new FormGroup({
     title: new FormControl(this.data.title, Validators.required),
     startdate: new FormControl(this.calService.getDateFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
@@ -115,7 +115,7 @@ export class EventDataDialog implements OnInit{
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private calService:CalendarService,
-    public dialogRef:MatDialogRef<EventDataDialog>,
+    public dialogRef:MatDialogRef<EventDataDialogComponent>,
     private _snackBar: MatSnackBar
     ){
     }
