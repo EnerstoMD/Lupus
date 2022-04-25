@@ -1,4 +1,11 @@
 # Changelog
+### [1.1.1](https://github.com/EnerstoMD/Lupus/compare/v1.1.0...v1.1.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* docker latest img ([775ffe3](https://github.com/EnerstoMD/Lupus/commit/775ffe3ce42354eb6e4f2e8c5a191777c242f955))
+
 ## [1.1.0](https://github.com/EnerstoMD/Lupus/compare/v1.0.0...v1.1.0) (2022-04-25)
 
 
