@@ -6,5 +6,6 @@ export class Event {
         public end:string,
         public description:string,
         public is_confirmed:boolean,
+        public created_by:string,
     ){}
 }

@@ -17,7 +17,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="top-toolbar" color="primary">
       <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
@@ -28,7 +28,7 @@
       
     </mat-toolbar>
     
-    <router-outlet></router-outlet>
+    <router-outlet class="nav-content"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

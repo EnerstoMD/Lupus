@@ -1,18 +1,14 @@
 <form class="event-form" [formGroup]="eventFormGroup">
-    <h2 mat-dialog-title>
-        <mat-form-field class="w3-card-4 event-form-section-title " appearance="outline">
+        <mat-form-field class="event-form-section-title " appearance="outline">
             <mat-label>Titre</mat-label>
             <input matInput formControlName="title" />
             <mat-hint *ngIf="data.is_confirmed" align="end">rendez-vous confirme <mat-icon color="warn">check</mat-icon></mat-hint>         
         </mat-form-field>
-    </h2>
     
-    <div mat-dialog-content>
         <mat-form-field class="event-form-section-desc" appearance="fill">
             <mat-label>Description</mat-label>
             <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
-    </div>
     
     <table>
         <tr>
@@ -48,19 +44,20 @@
             </td> 
         </tr>
     </table>
-</form>
-<div mat-dialog-actions>
-    <div *ngIf="eventFormGroup.disabled; else elseBlock">
-        <div *ngIf="data.is_confirmed; else elseBlock">
-            <button mat-raised-button  (click)="unconfirmEvent()"><mat-icon>cancel</mat-icon> Annuler Confirmation</button>
+
+    <div mat-dialog-actions>
+        <div *ngIf="eventFormGroup.disabled; else elseBlock">
+            <div *ngIf="data.is_confirmed; else elseBlock">
+                <button mat-raised-button  (click)="unconfirmEvent()"><mat-icon>cancel</mat-icon> Annuler Confirmation</button>
+            </div>
+            <ng-template #elseBlock>
+                <button mat-raised-button (click)="confirmEvent()"><mat-icon>send</mat-icon> Confimer rendez-vous</button>
+            </ng-template>
+            <button mat-button color="accent" (click)="modifyEvent()"><mat-icon>mode_edit</mat-icon></button>
         </div>
         <ng-template #elseBlock>
-            <button mat-raised-button (click)="confirmEvent()"><mat-icon>send</mat-icon> Confimer rendez-vous</button>
+            <button mat-raised-button color="primary" (click)="updateEvent()"><mat-icon>save</mat-icon></button>
+            <button mat-button color="warn" (click)="deleteEvent()"><mat-icon>delete</mat-icon></button>
         </ng-template>
-        <button mat-button color="accent" (click)="modifyEvent()"><mat-icon>mode_edit</mat-icon></button>
     </div>
-    <ng-template #elseBlock>
-        <button mat-raised-button color="primary" (click)="updateEvent()"><mat-icon>save</mat-icon></button>
-        <button mat-button color="warn" (click)="deleteEvent()"><mat-icon>delete</mat-icon></button>
-    </ng-template>
-</div>
+</form>

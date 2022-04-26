@@ -4,21 +4,53 @@
 }
 
 .event-form{
-    min-width: 200px;
-    max-width: 500px;
-    width: 100% ;
-    padding-right: 10px;
-    display: grid;
-    
+    /* min-width: 200px; */
+    max-width: 80% !important;
+    max-height: 70% !important;
+    display: inline-grid;
+    /* width: 90% ; */
+}
+.createevent-form{
+    /* min-width: 200px; */
+    max-width: 80% !important;
+    display: inline-grid;
+    /* width: 90% ; */
 }
 .event-form-section-title{
     font-size: 1em;
     font-weight: bold;
-    margin-bottom: 10px;
-    display: inline;
+    max-inline-size: 50%;
 }
 .event-form-section-desc{
     margin-bottom: 10px;
+    height: 30%;
+}
+
+.mat-dialog-content-desc{
+    margin-bottom: 10px;
+    height: 20%;
+    display: list-item;
+}
+
+td {
+    max-height: 90%;
+    width : 40%;
+    /* this is to change to adapt to the screen size */
+    /* display:inline; */
+}
+
+.cal-card{
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.event-form-section-date{
     display: inline;
-    height: 100px;
+    max-width: 30%;
+}
+table {
+    padding: 1px;
+    width: 100%;
+    /* display: grid; */
 }
