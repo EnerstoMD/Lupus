@@ -1,4 +1,11 @@
 # Changelog
+### [1.1.2](https://github.com/EnerstoMD/Lupus/compare/v1.1.1...v1.1.2) (2022-04-27)
+
+
+### Bug Fixes
+
+* fixed docker port to expose ([6ba2850](https://github.com/EnerstoMD/Lupus/commit/6ba28500e46cf9a786e2dc29795a02a12bf44936))
+
 ### [1.1.1](https://github.com/EnerstoMD/Lupus/compare/v1.1.0...v1.1.1) (2022-04-25)
 
 
