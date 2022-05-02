@@ -79,10 +79,10 @@
             <button mat-mini-fab (click)="searchPatient()">
                 <mat-icon>search</mat-icon>
             </button>
-            <mat-selection-list #selectedPat [multiple]="false" >       
+            <mat-selection-list #selectedPat [multiple]="false">       
                 <mat-card>
                     <mat-list-option *ngFor="let patient of patients" [value]="patient" (click)="prefillInfos(patient)">
-                        {{patient.name}} {{patient.lastname}} {{patient.phone}}
+                        {{patient.name}} {{patient.lastname}} {{patient.phone}} {{patient.ins_matricule}}
                     </mat-list-option>
                 </mat-card>  
             </mat-selection-list>

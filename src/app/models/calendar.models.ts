@@ -7,5 +7,6 @@ export class Event {
         public description:string,
         public is_confirmed:boolean,
         public created_by:string,
+        public consulted_patients:string[]
     ){}
 }
