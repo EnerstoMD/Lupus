@@ -17,4 +17,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<AuthToken>(environment.patapiUrl+'/user/login', {"email": email, "password": password})
   }
+  logout() {
+    localStorage.removeItem('token')
+  }
 }

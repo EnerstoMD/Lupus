@@ -5,8 +5,8 @@
 
 .event-form{
     /* min-width: 200px; */
-    max-width: 80% !important;
-    max-height: 70% !important;
+    /* max-width: 80% !important;
+    max-height: 70% !important; */
     display: inline-grid;
     /* width: 90% ; */
 }
@@ -19,11 +19,13 @@
 .event-form-section-title{
     font-size: 1em;
     font-weight: bold;
-    max-inline-size: 50%;
+    max-inline-size: 100%;
+    display: inline;
 }
 .event-form-section-desc{
     margin-bottom: 10px;
     height: 30%;
+    display: inline;
 }
 
 .mat-dialog-content-desc{
@@ -46,11 +48,16 @@ td {
 }
 
 .event-form-section-date{
-    display: inline;
+    display: inline-table;
     max-width: 30%;
 }
 table {
     padding: 1px;
     width: 100%;
+    display: inline-table;
     /* display: grid; */
+}
+
+event-form-section-patient{
+    display: inline;
 }
