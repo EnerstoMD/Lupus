@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup ,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -35,6 +35,11 @@ export class LoginComponent {
           this.router.navigate(['/calendar'])
           localStorage.setItem('token',data.token)
         }
+      },
+      (error)=>{
+        this._snackBar.open("Email ou mot de passe incorrect" , "", {
+          duration: 2000,
+        });
       }
     )
   }

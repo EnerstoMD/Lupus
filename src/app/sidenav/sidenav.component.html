@@ -17,18 +17,15 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="top-toolbar" color="primary">
       <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Lupus</span>
-      <!-- <button mat-icon-button aria-label="Toggle sidenav" (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
-      
+      <button mat-button color="basic" routerLink="/user-info" class="settings-button" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Parametres</button>
     </mat-toolbar>
     
-    <router-outlet></router-outlet>
+    <router-outlet class="nav-content"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

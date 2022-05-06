@@ -31,10 +31,13 @@ export class CalendarComponent implements OnInit {
   
   evs: Observable<Event[]>
   calendarOptions: CalendarOptions = {
-    initialView: 'timeGridWeek',
+    initialView: this.adpatScreenOrientationWithCalView(),
+    themeSystem: 'solarized',
+    handleWindowResize: true,
+    windowResize: this.adaptScreen,
     locale:'fr',
     firstDay:1,
-    aspectRatio: 2,
+    aspectRatio: window.innerWidth/window.innerHeight,
     nowIndicator:true,
     businessHours:{
       startTime:'8:00',
@@ -64,6 +67,25 @@ export class CalendarComponent implements OnInit {
         })
       }
     )
+  }
+
+  adpatScreenOrientationWithCalView(): string {
+    let initView ='dayGrid'
+    var orientation = (screen.orientation || {}).type || screen.orientation;
+    if (orientation === "landscape-primary") {
+      initView='timeGridWeek'
+      console.log("That looks good.");
+    } else if (orientation === "portrait-secondary" || orientation === "portrait-primary") {
+      initView='dayGrid'
+      console.log("Mmmh... you should rotate your device to landscape");
+    } else if (orientation === undefined) {
+      console.log("The orientation API isn't supported in this browser :(");
+    }
+    return initView
+  }
+  adaptScreen(){
+    this.calendarOptions.aspectRatio = window.innerWidth/window.innerHeight
+    
   }
 
   openEvDialog(info:EventClickArg){
@@ -107,7 +129,7 @@ export class EventDataDialogComponent implements OnInit{
     title: new FormControl(this.data.title, Validators.required),
     startdate: new FormControl(this.calService.getDateFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
     starttime: new FormControl(this.calService.getTimeFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-1][0-9]|2[0-3]):([0-5][0-9])$")]),
-    enddate: new FormControl(this.calService.getDateFromFCEvent(this.data.end),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
+    enddate: new FormControl(this.calService.getDateFromFCEvent(this.data.start),[Validators.required,Validators.pattern("^([0-2][0-9][0-9][0-9])-([0-1][0-9])-([0-3][0-9])$")]),
     endtime: new FormControl(this.calService.getTimeFromFCEvent(this.data.end),[Validators.required,Validators.pattern("^([0-1][0-9]|2[0-3]):([0-5][0-9])$")]),
     description: new FormControl(this.data.description),
 });

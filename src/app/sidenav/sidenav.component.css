@@ -11,12 +11,24 @@
   background: inherit;
 }
 
-.mat-toolbar.mat-primary {
+.top-toolbar{
+  max-height: 12%;
+}
+.top-toolbar.mat-primary {
   position: flex;
   top: 10;
   z-index: 1;
 }
+.nav-content{
+  max-height: 90%;
+}
 
 .active {
   font-size: 1.3rem;
+}
+
+.settings-button{
+  position: absolute;
+  right: 0.5%;
+  top: 1;
 }

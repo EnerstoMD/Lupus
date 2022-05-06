@@ -2,7 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PersonalInfo } from '../models/patientfile.models';
-import { PatientsService } from '../patients.service';
+import { PatientsService } from '../patients/patients.service';
 import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';

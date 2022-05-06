@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from '../app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavComponent } from '../sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { PatientsComponent } from './patients/patients.component';
-import { ConsultationsComponent } from './consultations/consultations.component';
-import { SearchComponent,PatientInfoFormDialogComponent } from './search/search.component';
+import { PatientsComponent } from '../patients/patients.component';
+import { ConsultationsComponent } from '../consultations/consultations.component';
+import { SearchComponent,PatientInfoFormDialogComponent } from '../search/search.component';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,19 +27,21 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { PatientfileComponent,AddHistoryFormDialogComponent } from './patientfile/patientfile.component'; 
+import { PatientfileComponent,AddHistoryFormDialogComponent } from '../patientfile/patientfile.component'; 
 import {MatStepperModule} from '@angular/material/stepper';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { CalendarComponent,EventDataDialogComponent } from './calendar/calendar.component';
+import { CalendarComponent,EventDataDialogComponent } from '../calendar/calendar.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {CreateEventDialogComponent} from './calendar/createevent.component';
+import {CreateEventDialogComponent} from '../calendar/createevent.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { HomeComponent } from './home/home.component';
-import {AuthInterceptor} from './auth.interceptor';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from '../home/home.component';
+import {AuthInterceptor} from '../auth/auth.interceptor';
+import { LoginComponent } from '../login/login.component';
+import {UserInfoComponent} from '../user-info/user-info.component';
+import {PwdDialogComponent} from '../user-info/pwd-dialog.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -62,6 +64,8 @@ FullCalendarModule.registerPlugins([
     CreateEventDialogComponent,
     HomeComponent,
     LoginComponent,
+    UserInfoComponent,
+    PwdDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,8 @@ FullCalendarModule.registerPlugins([
     CalendarComponent,
     EventDataDialogComponent,
     CreateEventDialogComponent,
+    UserInfoComponent,
+    PwdDialogComponent,
   ]
 })
 export class AppModule { }

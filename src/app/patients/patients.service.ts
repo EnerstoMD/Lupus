@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map,catchError } from 'rxjs/operators';
 import { Observable, throwError} from 'rxjs';
-import { PersonalInfo } from './models/patientfile.models';
+import { PersonalInfo } from '../models/patientfile.models';
 import { environment } from 'src/environments/environment';
 
 
