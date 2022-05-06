@@ -1,4 +1,11 @@
 # Changelog
+## [1.2.0](https://github.com/EnerstoMD/Lupus/compare/v1.1.2...v1.2.0) (2022-05-06)
+
+
+### Features
+
+* created user info card ([1980ea3](https://github.com/EnerstoMD/Lupus/commit/1980ea3ceac4fd90488605acabb0aea5f6e17379))
+
 ### [1.1.2](https://github.com/EnerstoMD/Lupus/compare/v1.1.1...v1.1.2) (2022-04-27)
 
 
