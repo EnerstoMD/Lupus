@@ -7,7 +7,7 @@
   border-radius: 4px,
 ));
 
-$primary-palette: mat.define-palette(mat.$blue-palette,A400);
+$primary-palette: mat.define-palette(mat.$blue-palette,A100,A700);
 $my-app-accent: mat.define-palette(mat.$orange-palette,A700 );
 $my-app-warn: mat.define-palette(mat.$red-palette);
 $my-app-background: mat.define-palette(mat.$grey-palette, A700);

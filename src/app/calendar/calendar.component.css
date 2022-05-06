@@ -1,6 +1,9 @@
 .agenda{
     max-width: 90%;
     text-justify: auto;
+    margin-block: 10px;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
 }
 
 .event-form{
@@ -24,7 +27,7 @@
 }
 .event-form-section-desc{
     margin-bottom: 10px;
-    height: 30%;
+    height: 100%;    
     display: inline;
 }
 

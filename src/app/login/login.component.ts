@@ -35,6 +35,11 @@ export class LoginComponent {
           this.router.navigate(['/calendar'])
           localStorage.setItem('token',data.token)
         }
+      },
+      (error)=>{
+        this._snackBar.open("Email ou mot de passe incorrect" , "", {
+          duration: 2000,
+        });
       }
     )
   }

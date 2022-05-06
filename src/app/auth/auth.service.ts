@@ -18,6 +18,6 @@ export class AuthService {
     return this.http.post<AuthToken>(environment.patapiUrl+'/user/login', {"email": email, "password": password})
   }
   logout() {
-    localStorage.removeItem('token')
+    return this.http.delete<AuthToken>(environment.patapiUrl+'/user/logout', {})
   }
 }

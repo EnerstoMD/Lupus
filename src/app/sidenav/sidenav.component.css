@@ -26,3 +26,9 @@
 .active {
   font-size: 1.3rem;
 }
+
+.settings-button{
+  position: absolute;
+  right: 0.5%;
+  top: 1;
+}

@@ -40,6 +40,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HomeComponent } from '../home/home.component';
 import {AuthInterceptor} from '../auth/auth.interceptor';
 import { LoginComponent } from '../login/login.component';
+import {UserInfoComponent} from '../user-info/user-info.component';
+import {PwdDialogComponent} from '../user-info/pwd-dialog.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -62,6 +64,8 @@ FullCalendarModule.registerPlugins([
     CreateEventDialogComponent,
     HomeComponent,
     LoginComponent,
+    UserInfoComponent,
+    PwdDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,8 @@ FullCalendarModule.registerPlugins([
     CalendarComponent,
     EventDataDialogComponent,
     CreateEventDialogComponent,
+    UserInfoComponent,
+    PwdDialogComponent,
   ]
 })
 export class AppModule { }

@@ -22,10 +22,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span>Lupus</span>
-      <!-- <button mat-icon-button aria-label="Toggle sidenav" (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
-      
+      <button mat-button color="basic" routerLink="/user-info" class="settings-button" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Parametres</button>
     </mat-toolbar>
     
     <router-outlet class="nav-content"></router-outlet>

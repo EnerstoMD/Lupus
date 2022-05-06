@@ -5,9 +5,9 @@
             <mat-hint *ngIf="data.is_confirmed" align="end">rendez-vous confirme <mat-icon color="warn">check</mat-icon></mat-hint>         
         </mat-form-field>
     
-        <mat-form-field class="event-form-section-desc" appearance="fill">
+        <mat-form-field class="event-form-section-desc" appearance="fill" >
             <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description"></textarea>
+            <textarea matInput cdkTextareaAutosize formControlName="description"></textarea>
         </mat-form-field>
     
     <table>
