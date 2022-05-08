@@ -1,16 +1,10 @@
 @use "@angular/material" as mat;
 
 @include mat.core();
-@include mat.strong-focus-indicators((
-  border-bottom-style: inset,
-  border-width: 1px,
-  border-radius: 4px,
-));
 
-$primary-palette: mat.define-palette(mat.$blue-palette,A100,A700);
-$my-app-accent: mat.define-palette(mat.$orange-palette,A700 );
-$my-app-warn: mat.define-palette(mat.$red-palette);
-$my-app-background: mat.define-palette(mat.$grey-palette, A700);
+$primary-palette: mat.define-palette(mat.$grey-palette,900,400,200);
+$my-app-accent: mat.define-palette(mat.$red-palette,700,400,900);
+$my-app-warn: mat.define-palette(mat.$amber-palette,700,600,900);
 
 $my-app-theme: mat.define-light-theme(
   (
@@ -18,10 +12,36 @@ $my-app-theme: mat.define-light-theme(
       primary: $primary-palette,
       accent: $my-app-accent,
       warn: $my-app-warn,
-    ),
-    background: $my-app-background,
+    )
   )
 );
 
 @include mat.all-component-themes($my-app-theme);
-@include mat.strong-focus-indicators-theme($my-app-theme);
+
+.mat-card{
+  &:hover {
+    @include mat.elevation(10);
+  }
+}
+
+button {
+  &:hover {
+    @include mat.elevation(10);
+  }
+}
+
+.mat-raised-button {
+  &:hover {
+    @include mat.elevation(10);
+  }
+}
+.mat-list-item{
+  &:hover {
+    @include mat.elevation(2);
+  }
+}
+.fc-timegrid-now-indicator-line{
+  &:hover {
+    @include mat.elevation(5);
+  }
+}

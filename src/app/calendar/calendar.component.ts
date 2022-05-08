@@ -34,10 +34,11 @@ export class CalendarComponent implements OnInit {
     initialView: this.adpatScreenOrientationWithCalView(),
     themeSystem: 'solarized',
     handleWindowResize: true,
-    windowResize: this.adaptScreen,
+    windowResize: this.adaptScreen.bind(this),
     locale:'fr',
     firstDay:1,
-    aspectRatio: window.innerWidth/window.innerHeight,
+    expandRows:true,
+    aspectRatio: window.innerWidth/(0.85*window.innerHeight),
     nowIndicator:true,
     businessHours:{
       startTime:'8:00',
@@ -83,9 +84,8 @@ export class CalendarComponent implements OnInit {
     }
     return initView
   }
-  adaptScreen(){
-    this.calendarOptions.aspectRatio = window.innerWidth/window.innerHeight
-    
+  adaptScreen(arg:any){
+    this.calendarOptions.aspectRatio = window.innerWidth/window.innerWidth/(0.85*window.innerHeight)   
   }
 
   openEvDialog(info:EventClickArg){

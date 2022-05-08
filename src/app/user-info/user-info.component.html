@@ -2,42 +2,39 @@
     <form [formGroup]="userForm">
         <mat-card-header>
             <mat-card-title>
-                <h1>Informations utilisateur</h1>
+                <h1>
+                    <span>Informations utilisateur </span>
+                </h1>
+                <div class="modify-user-info-button">
+                    <div *ngIf="userForm.disabled; else elseBlock">
+                        <button mat-raised-button color="primary" (click)="modifyUser()"><mat-icon>mode_edit</mat-icon></button>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div>
+                            <button mat-raised-button color="warn" (click)="updateUser()"><mat-icon>save</mat-icon></button>
+                            <button mat-raised-button color="basic" (click)="cancelUserMod()"><mat-icon>cancel</mat-icon></button>
+                        </div>
+                    </ng-template>
+                </div>
+                
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>
+
             <mat-form-field class="user-info-form-field" appearance="outline">
                 <mat-label>Nom</mat-label>
                 <input matInput formControlName="name">
             </mat-form-field>
-            </p>
-            <p>
-            <mat-form-field class="user-info-form" appearance="outline">
+
+            <mat-form-field class="user-info-form-field" appearance="outline">
                 <mat-label>email</mat-label>
                 <input matInput formControlName="email" required>
             </mat-form-field>
-            </p>
-        </mat-card-content>
-        <mat-card-actions align="start">
-            <div *ngIf="userForm.disabled; else elseBlock">
-                <button mat-raised-button color="primary" (click)="modifyUser()"><mat-icon>mode_edit</mat-icon></button>
-            </div>
-            <ng-template #elseBlock>
-                <button mat-raised-button color="warn" (click)="updateUser()"><mat-icon>save</mat-icon></button>
-                <button mat-raised-button color="basic" (click)="cancelUserMod()"><mat-icon>cancel</mat-icon></button>
-            </ng-template>
-            
-            <p>
-                <br>
-                <button mat-raised-button color="Warn" (click)="updatePwd()"><mat-icon>lock-reset</mat-icon>changer de mot de passe</button>  
-            </p>
 
-            <p>
-                <br>
-                <button mat-raised-button color="accent" (click)="logout()"><mat-icon>exit_to_app</mat-icon>deconnexion</button>  
-            </p>
-                 
+        </mat-card-content>
+        <mat-card-actions align="start">  
+                <button mat-raised-button color="Warn" (click)="updatePwd()"><mat-icon>lock-reset</mat-icon>changer de mot de passe</button>  
+                <button mat-raised-button color="accent" (click)="logout()"><mat-icon>exit_to_app</mat-icon>deconnexion</button>                  
         </mat-card-actions>
     </form>
 </mat-card>

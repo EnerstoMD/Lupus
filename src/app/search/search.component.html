@@ -2,13 +2,16 @@
     <div class="search-or-add-patient-grid-item">
         <form class="search-form" (ngSubmit)="searchPatient()">
             <mat-form-field class="search-bar" appearance="fill">
-            <mat-label>Recherche le nom d'un patient</mat-label>
-            <input type="text"
-                    placeholder="recherche sensible a la casse"
-                    matInput
-                    [formControl]="searchControl"
-                    >
+                <mat-label>Recherche le nom d'un patient</mat-label>
+                <input type="text"
+                        placeholder="recherche sensible a la casse"
+                        matInput
+                        [formControl]="searchControl"
+                        > 
             </mat-form-field>
+            <div class="search-button">
+                <button mat-mini-fab class="search-icon" color="primary" type="submit" ><mat-icon>search</mat-icon></button>
+            </div>
         </form>
     </div>
     <div class="search-or-add-patient-grid-item">
