@@ -1,4 +1,11 @@
 # Changelog
+### [1.3.1](https://github.com/EnerstoMD/Lupus/compare/v1.3.0...v1.3.1) (2022-05-08)
+
+
+### Bug Fixes
+
+* fixed ci ([36856cd](https://github.com/EnerstoMD/Lupus/commit/36856cda49cf416ad20d20cfb8e587129c79a891))
+
 ## [1.3.0](https://github.com/EnerstoMD/Lupus/compare/v1.2.0...v1.3.0) (2022-05-08)
 
 
