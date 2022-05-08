@@ -10,7 +10,8 @@ import { LoginComponent } from '../login/login.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
 
 const routes: Routes = [
-  { path: '', component:HomeComponent},
+  { path: 'home', component:HomeComponent ,canActivate:[AuthGuard]},
+  { path: '', redirectTo:'home', pathMatch:'full'},
   { path: 'login', component:LoginComponent},
   { path: 'patients', component: PatientsComponent,canActivate:[AuthGuard]},
   { path: 'patients/:id', component: PatientfileComponent,canActivate:[AuthGuard]},

@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false"
+      [opened]="(isHandset$ | async) === true"
       >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
@@ -18,11 +18,12 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="top-toolbar" color="primary">
-      <button mat-icon-button aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
+      <button mat-icon-button aria-label="Example icon button with a menu icon" [hidden]="true" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Lupus</span>
-      <button mat-button color="basic" routerLink="/user-info" class="settings-button" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Parametres</button>
+      
+      <button mat-button color="basic" routerLink="/home" class="socrat-button" routerLinkActive="active"> <mat-icon>double_arrow</mat-icon><span>Sócrates</span></button>
+      <button mat-button color="basic" routerLink="/user-info" class="settings-button" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Infos</button>
     </mat-toolbar>
     
     <router-outlet class="nav-content"></router-outlet>

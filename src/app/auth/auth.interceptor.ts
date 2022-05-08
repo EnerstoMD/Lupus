@@ -28,11 +28,14 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token')
+    let token = localStorage.getItem('token')
     if (token) {
       if (this.isTokenExpired(token)) {
+        console.log('token expired')
         this.auth.logout();
+        localStorage.removeItem('token');
         } else {
+        console.log('interception')
         request = this.addToken(request, token);
         }
       }

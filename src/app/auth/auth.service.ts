@@ -12,7 +12,9 @@ export interface AuthToken{
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    ){}
 
   login(email: string, password: string) {
     return this.http.post<AuthToken>(environment.patapiUrl+'/user/login', {"email": email, "password": password})

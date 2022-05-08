@@ -100,16 +100,6 @@ FullCalendarModule.registerPlugins([
   ],
   bootstrap: [
     AppComponent,
-    SidenavComponent,
-    PatientsComponent,
-    ConsultationsComponent,
-    SearchComponent,
-    PatientInfoFormDialogComponent,
-    CalendarComponent,
-    EventDataDialogComponent,
-    CreateEventDialogComponent,
-    UserInfoComponent,
-    PwdDialogComponent,
   ]
 })
 export class AppModule { }

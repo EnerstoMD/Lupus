@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lupus';
-  isSearched:Boolean;
+  @Input() isConnected:Boolean;
   constructor(){
-    this.isSearched = false
+    this.isConnected = false
   }
 }
