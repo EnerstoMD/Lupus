@@ -12,7 +12,11 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action       
-      
+    
+  publish-docker-image:
+    runs-on: ubuntu-latest
+    environment: ernesto-devenv
+    steps:  
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
