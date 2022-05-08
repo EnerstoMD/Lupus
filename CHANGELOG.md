@@ -1,4 +1,11 @@
 # Changelog
+## [1.3.0](https://github.com/EnerstoMD/Lupus/compare/v1.2.0...v1.3.0) (2022-05-08)
+
+
+### Features
+
+* Found Socrates name and fixed color them and hovers ([8cf5a94](https://github.com/EnerstoMD/Lupus/commit/8cf5a94376e40417a0b756dabf6a552f9fbd9acb))
+
 ## [1.2.0](https://github.com/EnerstoMD/Lupus/compare/v1.1.2...v1.2.0) (2022-05-06)
 
 
