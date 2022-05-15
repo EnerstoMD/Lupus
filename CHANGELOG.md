@@ -1,4 +1,11 @@
 # Changelog
+### [1.3.3](https://github.com/EnerstoMD/Lupus/compare/v1.3.2...v1.3.3) (2022-05-15)
+
+
+### Bug Fixes
+
+* added pagination to search and limited search on events ([83d4a8a](https://github.com/EnerstoMD/Lupus/commit/83d4a8a57b1f00e57ad9bb5aa74ff85db46ef597))
+
 ### [1.3.2](https://github.com/EnerstoMD/Lupus/compare/v1.3.1...v1.3.2) (2022-05-08)
 
 
