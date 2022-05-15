@@ -1,4 +1,11 @@
 # Changelog
+### [1.3.4](https://github.com/EnerstoMD/Lupus/compare/v1.3.3...v1.3.4) (2022-05-15)
+
+
+### Bug Fixes
+
+* configured nginx to handle angular pages refresh ([ef13e85](https://github.com/EnerstoMD/Lupus/commit/ef13e8533876e62a304f674e3ebd7c35953ed195))
+
 ### [1.3.3](https://github.com/EnerstoMD/Lupus/compare/v1.3.2...v1.3.3) (2022-05-15)
 
 
