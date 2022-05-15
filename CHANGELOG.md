@@ -1,4 +1,11 @@
 # Changelog
+### [1.3.6](https://github.com/EnerstoMD/Lupus/compare/v1.3.5...v1.3.6) (2022-05-15)
+
+
+### Bug Fixes
+
+* created cicd push on tagging ([da9fafa](https://github.com/EnerstoMD/Lupus/commit/da9fafa2acec9631928e8e35768a2d5b18c77b07))
+
 ### [1.3.5](https://github.com/EnerstoMD/Lupus/compare/v1.3.4...v1.3.5) (2022-05-15)
 
 
