@@ -1,4 +1,11 @@
 # Changelog
+### [1.3.5](https://github.com/EnerstoMD/Lupus/compare/v1.3.4...v1.3.5) (2022-05-15)
+
+
+### Bug Fixes
+
+* nginx config fix ([48bdab6](https://github.com/EnerstoMD/Lupus/commit/48bdab602717c9c8b0cdee76bc392b979014add6))
+
 ### [1.3.4](https://github.com/EnerstoMD/Lupus/compare/v1.3.3...v1.3.4) (2022-05-15)
 
 
