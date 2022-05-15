@@ -6,6 +6,9 @@ name: Build Angular CI
 on:
   pull_request:
     branches: [ main ]
+  push:
+    tags:
+    - '*'
 
 jobs:
   build:
