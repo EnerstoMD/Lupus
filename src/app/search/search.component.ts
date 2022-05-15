@@ -8,6 +8,7 @@ import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search',
@@ -25,8 +26,18 @@ export class SearchComponent{
   observedPat: Observable<PersonalInfo>
   name:string
   @Input() id:string
+  pageEvent: PageEvent;
+  length = 100;
+  pageSize=10;
+  pageSizeOptions = [5, 10, 25, 100];
 
   constructor(public dialog: MatDialog, private patService:PatientsService) {
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
   }
 
   addPatient() {
@@ -40,16 +51,35 @@ export class SearchComponent{
     });
   }
 
-  searchPatient(){
+  SearchPatientByName(event:PageEvent){
     this.listIsVisible = true
-    this.filteredPatients=this.patService.searchPatient(this.searchControl.value)
+    console.log(event)
+    this.name=this.searchControl.value
+    if (this.name == "" || this.name==null){
+      this.name="*"
+    }
+    this.patService.countSearchedPatients(this.name).subscribe(
+      count => {
+        console.log(count)
+        this.length = count
+      }
+    )
+    if (event.pageSize==null||event.pageSize==undefined){
+      event.pageSize=this.pageSize
+    }
+  
+    this.filteredPatients=this.patService.searchPatientByName(this.name,event)
     this.filteredPatients.subscribe(
       patients => {
         this.patients = patients
         this.searchcomplete = true
       },
-      error => this.errorMessage = error,
+      error => {
+        this.errorMessage = error
+        this.searchcomplete = false
+      },
     )
+    return event
   }
 }
 

@@ -1,6 +1,6 @@
 <div class="search-or-add-patient-card">
     <div class="search-or-add-patient-grid-item">
-        <form class="search-form" (ngSubmit)="searchPatient()">
+        <form class="search-form" (ngSubmit)="SearchPatientByName($event)">
             <mat-form-field class="search-bar" appearance="fill">
                 <mat-label>Recherche le nom d'un patient</mat-label>
                 <input type="text"
@@ -27,5 +27,7 @@
         <mat-list-option *ngFor="let patient of filteredPatients | async" [value]="patient">
             <a mat-list-item [routerLink]="patient.id">{{patient.name}} {{patient.lastname}} {{patient.ins_matricule}}</a>
         </mat-list-option>
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = SearchPatientByName($event)">        
+        </mat-paginator>
       </mat-selection-list>
 </div>

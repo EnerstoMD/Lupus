@@ -42,6 +42,7 @@ import {AuthInterceptor} from '../auth/auth.interceptor';
 import { LoginComponent } from '../login/login.component';
 import {UserInfoComponent} from '../user-info/user-info.component';
 import {PwdDialogComponent} from '../user-info/pwd-dialog.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -94,6 +95,7 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatPaginatorModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

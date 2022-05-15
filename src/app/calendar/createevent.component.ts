@@ -31,7 +31,9 @@ export class CreateEventDialogComponent {
         address: new FormControl(),
         city: new FormControl(),
     });
-    patientFormControl = new FormControl()
+    searchPatientFormGroup = new FormGroup({
+        name: new FormControl(),
+    });
     patients: PersonalInfo[] = []
     filterPatients: Observable<PersonalInfo[]>
     errorMessage = '';
@@ -45,7 +47,7 @@ export class CreateEventDialogComponent {
     ) {}
     
     searchPatient(){
-        this.filterPatients = this.patService.searchPatient(this.patientFormControl.value)
+        this.filterPatients = this.patService.searchPatient(this.searchPatientFormGroup.value.name)
         this.filterPatients.subscribe(
             patients => {
                 this.patients = patients

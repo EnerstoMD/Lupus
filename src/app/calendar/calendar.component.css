@@ -67,6 +67,13 @@ table {
     /* display: grid; */
 }
 
-event-form-section-patient{
+.event-form-section-patient{
     display: inline;
 }
+/* 
+.event-form-search{
+    grid-column: 5/6;
+}
+.search-icon{
+    grid-column: 1/6;
+} */
