@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  patapiUrl: 'http://localhost:4545/v1',
+  // patapiUrl: 'http://localhost:4545/v1',
+  patapiUrl: 'http://patapi.localhost/v1',
 };
 
 /*
