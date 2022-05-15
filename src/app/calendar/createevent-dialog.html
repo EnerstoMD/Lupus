@@ -71,14 +71,14 @@
         </mat-tab>
 
         <mat-tab label="recherche patients">
-            <mat-form-field class="event-form-section-patient" appearance="fill">
-                <mat-label>Rechercher patients</mat-label>
-                <input matInput formControlName="patientFormControl">
-                 
-            </mat-form-field>
-            <button mat-mini-fab (click)="searchPatient()">
-                <mat-icon>search</mat-icon>
-            </button>
+            <form class="event-form-section-patient" [formGroup]="searchPatientFormGroup" (ngSubmit)="searchPatient">
+                <mat-form-field class="event-form-search" appearance="fill">
+                    <mat-label>Recherche le nom d'un patient</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-hint>Limite aux 5 premiers resultats</mat-hint>
+                </mat-form-field>
+                <button mat-mini-fab class="search-icon" color="primary" (click)="searchPatient()" ><mat-icon>search</mat-icon></button>
+            </form>
             <mat-selection-list #selectedPat [multiple]="false">       
                 <mat-card>
                     <mat-list-option *ngFor="let patient of patients" [value]="patient" (click)="prefillInfos(patient)">
